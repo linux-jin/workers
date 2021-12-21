@@ -1,21 +1,14 @@
 ﻿[English](README.md) | 简体中文
 
-# Cloudflare Workers
-
-> # 2020-12-11 Cloudflare 永久封禁 zme.ink （恶意请求被投诉）
-> https://cors.eu.org
-
-## ❤ cors
+## 🧡 cors (Cloudflare Workers)
 支持跨域请求（转换不支持跨域请求的接口），可直接发起 ajax、fetch  
 支持HTTPS（解决远程数据接口不支持HTTPS）
 
-### 接口
-- `Host/{URL}`
+### 使用
 - `https://cors.eu.org/{URL}`
-
-### 示例
+- 示例
 - <https://cors.eu.org/https://api.github.com>
-- <https://cors.eu.org/http://nginx.org/download/nginx-1.16.1.tar.gz>
+- <https://cors.eu.org/http://nginx.org/download/nginx-1.20.2.tar.gz>
 
 ```js
 // 拷贝到控制台运行
@@ -24,7 +17,7 @@ fetch("https://cors.eu.org/" + $url).then(x => x.text()).then(console.log)
 ```
 
 ### 安装
-- clone 项目，进入子目录（代表一个 worker）
+- clone 项目，进入 cors 目录
 - 编辑 `index.js` 和 `wrangler.toml` (配置密钥)
 - `wrangler config` 配置邮箱、密钥
 - `wrangler build` 构建
@@ -38,15 +31,29 @@ fetch("https://cors.eu.org/" + $url).then(x => x.text()).then(console.log)
 
 详情：https://developers.cloudflare.com/workers/about/limits/
 
-### Source
-- <https://github.com/netnr/workers>
+额度顶不住了，使用量大请用自己的账号搭建服务吧，谢谢！！！  
+![溢出](https://s1.netnr.eu.org/2019/11/03/0752457693.png)
 
 ---
 
-### 通知
+## 🧡 pages (Cloudflare Pages Functions )
+### 使用
+- `https://seep.eu.org/{URL}`
+- 示例
+- <https://seep.eu.org/https://api.github.com>
 
-额度顶不住了，使用量大请用自己的账号搭建服务吧，谢谢！！！
+### 安装
+```
+npm install wrangler@beta # 安装
+npx wrangler pages dev --help # 查看帮助（nodejs version >= 16.x）
+npx wrangler pages dev ./ # 进入 pages 目录运行
+```
+详细文档：<https://developers.cloudflare.com/pages/platform/functions>
 
-![溢出](https://cdn.jsdelivr.net/gh/netnr/static/2019/11/03/0752457693.png)
+### 套餐
+每天的调用请求总数上限为 100,000。如果达到每日限制，Pages 将停止执行函数并回退到仅提供静态资源。
 
-如果你不想麻烦，也许你可以[赞助](https://zme.ink)我升级为付费用户 $5/month 1千万请求量，请备注来自 cfw
+---
+
+## Source
+- <https://github.com/netnr/workers>
